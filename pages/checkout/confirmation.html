@@ -4,68 +4,37 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Checkout - Step 2</title>
+    <title>Order Confirmation</title>
     <style>
         body {
             font-family: Arial, sans-serif;
-            margin: 0;
             padding: 20px;
-        }
-
-        .container {
-            max-width: 600px;
-            margin: 0 auto;
-            padding: 20px;
-            border: 1px solid #ddd;
-            border-radius: 10px;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-        }
-
-        h1 {
             text-align: center;
         }
 
-        .details {
-            margin: 20px 0;
-            font-size: 1.1rem;
+        .message {
+            font-size: 20px;
+            margin-top: 20px;
         }
 
-        .details strong {
+        .back-link {
             display: inline-block;
-            width: 150px;
-        }
-
-        .confirm-btn {
-            display: inline-block;
-            padding: 10px 20px;
-            background-color: #28a745;
-            color: white;
+            margin-top: 20px;
             text-decoration: none;
-            border-radius: 5px;
-            font-size: 1rem;
-            text-align: center;
+            color: #007bff;
+            font-size: 16px;
         }
 
-        .confirm-btn:hover {
-            background-color: #218838;
+        .back-link:hover {
+            color: #0056b3;
         }
     </style>
 </head>
 
 <body>
-    <div class="container">
-        <h1>Checkout - Step 2</h1>
-        <div class="details">
-            <p><strong>Name:</strong> [Name from Step 1]</p>
-            <p><strong>Email:</strong> [Email from Step 1]</p>
-            <p><strong>Address:</strong> [Address from Step 1]</p>
-            <p><strong>City:</strong> [City from Step 1]</p>
-            <p><strong>Payment Method:</strong> [Payment Method from Step 1]</p>
-        </div>
-        <a href="#" class="confirm-btn">Confirm Order</a>
-    </div>
-    <!-- JavaScript file -->
-    <script src="script.js"></script>
+    <h1>Order Confirmed</h1>
+    <p class="message">Thank you for your order! We are processing it now.</p>
+    <a href="index.html" class="back-link">&larr; Back to Home</a>
 </body>
 
 </html>
