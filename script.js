@@ -1,11 +1,11 @@
-document.querySelectorAll('nav a').forEach(anchor => {
-    anchor.addEventListener('click', function (e) {
-        e.preventDefault();
-        document.querySelector(this.getAttribute('href')).scrollIntoView({
-            behavior: 'smooth'
-        });
+const allLinks = document.querySelectorAll("nav a");
+
+allLinks.forEach((link) => {
+    link.addEventListener("click", (e) => {
+        console.log(`Clicked link: ${link.href}`);
     });
 });
+
 
 
 const products = [
