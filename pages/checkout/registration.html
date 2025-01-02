@@ -44,18 +44,19 @@
             font-size: 1rem;
         }
 
-        button {
-            margin-top: 20px;
+        .confirm-btn {
+            display: inline-block;
             padding: 10px 20px;
             background-color: #007bff;
             color: white;
+            text-decoration: none;
             border: none;
             border-radius: 5px;
-            font-size: 1rem;
             cursor: pointer;
+            font-size: 16px;
         }
 
-        button:hover {
+        .confirm-btn:hover {
             background-color: #0056b3;
         }
     </style>
@@ -84,7 +85,7 @@
                 <option value="bank-transfer">Bank Transfer</option>
             </select>
 
-            <button type="submit">Proceed to Confirmation</button>
+            <a href="confirmation.html" class="confirm-btn">Confirm Order</a>
         </form>
     </div>
 
