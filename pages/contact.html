@@ -77,20 +77,14 @@
 
 <body>
     <!-- Google Tag Manager (noscript) -->
-    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-525RFK9F" height="0" width="0"
-            style="display:none;visibility:hidden"></iframe></noscript>
+    <noscript>
+        <iframe src="https://www.googletagmanager.com/ns.html?id=GTM-525RFK9F" height="0" width="0"
+            style="display:none;visibility:hidden"></iframe>
+    </noscript>
     <!-- End Google Tag Manager (noscript) -->
 
-    <header>
-        <h1>Contact Us</h1>
-        <nav>
-            <a href="../index.html">Home</a>
-            <a href="plp.html">Products</a>
-            <a href="contact.html">Contact</a>
-        </nav>
-    </header>
     <main>
-        <form class="contact-form" action="https://example.com/submit-form" method="post">
+        <form id="contact-form" class="contact-form" action="https://example.com/submit-form" method="post">
             <h2>Contact Us</h2>
             <label for="name">Name</label>
             <input type="text" id="name" name="name" placeholder="Your name" required>
@@ -104,57 +98,44 @@
             <button type="submit">Send Message</button>
         </form>
     </main>
-    <footer>
-        <p>© 2024 David Guillaume. All rights reserved.</p>
-    </footer>
-    <!-- JavaScript file -->
+
     <script>
         /////////////////////////////////////////////////////////////////////////////////////////////////////////////
         ////////////////////////////////////////////////// events //////////////////////////////////////////////////
         /////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-        ///////////////////////////////// view_item_list event//////////////////////////////////////////////////////
+        ///////////////////////////////// Form events //////////////////////////////////////////////////////
 
         window.dataLayer = window.dataLayer || [];
+        (function() {
+            var form = document.querySelector('form#contact-form');
+            if (!form) {
+                console.error('Contact form not found');
+                return;
+            }
 
-        function pushViewItemListEvent() {
-            window.dataLayer.push({
-                event: "view_item_list",
-                ecommerce: {
-                    item_list_id: "1", // Replace with dynamic data if needed
-                    item_list_name: "plp collection",
-                    items: [
-                        { item_id: "SKU_1", item_name: "Apple", index: 0, item_category: "fruits", price: 2 },
-                        { item_id: "SKU_2", item_name: "Banana", index: 1, item_category: "fruits", price: 53.3 },
-                        { item_id: "SKU_3", item_name: "Carrots", index: 2, item_category: "vegetables", price: 23 },
-                        { item_id: "SKU_4", item_name: "Tomatoes", index: 3, item_category: "fruits", price: 44 },
-                        { item_id: "SKU_5", item_name: "Milk", index: 4, item_category: "drinks", price: 2 },
-                    ],
-                },
-            });
-        }
-
-        // Observe when the item list becomes visible
-        const itemListElement = document.getElementById("product-list");
-
-        if (itemListElement) {
-            const observer = new IntersectionObserver(
-                (entries, observer) => {
-                    entries.forEach((entry) => {
-                        if (entry.isIntersecting) {
-                            // Push the event when the element becomes visible
-                            pushViewItemListEvent();
-
-                            // Stop observing after the event is pushed
-                            observer.unobserve(entry.target);
-                        }
+            var callback = function(event) {
+                if (event.type === 'beforeunload' && !form.checkValidity()) {
+                    window.dataLayer.push({
+                        event: 'formEvent',
+                        eventTarget: 'Form',
+                        eventAction: 'abandonment'
                     });
-                },
-                { threshold: 0.5 } // Fire when 50% of the element is visible
-            );
+                } else if (event.type !== 'beforeunload') {
+                    window.dataLayer.push({
+                        event: 'formEvent',
+                        eventTarget: event.target.id || event.target.name,
+                        eventAction: event.type
+                    });
+                }
+            };
 
-            observer.observe(itemListElement);
-        }
+            form.addEventListener('focus', callback, true);
+            form.addEventListener('change', callback, true);
+            form.addEventListener('blur', callback, true);
+            form.addEventListener('submit', callback, true);
+            window.addEventListener('beforeunload', callback);
+        })();
     </script>
 </body>
 
