@@ -104,7 +104,26 @@
     </div>
 
     <!-- JavaScript file -->
-    <script src="script.js"></script>
+    <script src="script.js">
+        window.dataLayer = window.dataLayer || [];
+        window.dataLayer.push({
+            event: "begin_checkout",
+            ecommerce: {
+                currency: "USD", // Adjust to the correct currency
+                value: 150.00, // Total value of the cart
+                items: [
+                    {
+                        item_name: "Product 1", // Product name
+                        item_id: "SKU12345", // Product SKU
+                        price: 50.00, // Product price
+                        quantity: 2, // Quantity
+                        item_category: "Category A" // Optional category
+                    }
+                ]
+            },
+            cp_split_test_variant: "variant_a" // Add your split test variant here
+        });
+    </script>
 </body>
 
 </html>
