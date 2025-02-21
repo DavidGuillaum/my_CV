@@ -4,13 +4,13 @@
 <head>
     <!-- Google Tag Manager -->
     <script>
-    window.dataLayer = window.dataLayer || [];
-    window.dataLayer.push({
-        event: "loadPage",
-        pageVariant: 'value123'
-    });
+        window.dataLayer = window.dataLayer || [];
+        window.dataLayer.push({
+            event: "loadPage",
+            pageVariant: 'value123'
+        });
 
-    (function (w, d, s, l, i) {
+        (function (w, d, s, l, i) {
             w[l] = w[l] || []; w[l].push({
                 'gtm.start':
                     new Date().getTime(), event: 'gtm.js'
@@ -20,6 +20,41 @@
         })(window, document, 'script', 'dataLayer', 'GTM-525RFK9F');
     </script>
     <!-- End Google Tag Manager -->
+    <script>
+        window.adobeDataLayer = window.adobeDataLayer || [];
+        window.adobeDataLayer.push({
+            "event": "page",
+            "page": {
+                "language": "de",
+                "path": "/internet/wingo-tv",
+                "platform": "web",
+                "deviceCategory": "desktop",
+                "brand": "wingo",
+                "subdomain": "eShop",
+                "type": "home",
+                "seoTitle": "Wingo TV avec blue TV: Champions League, Blockbuster &Co. | Wingo", // document.title will be passed in this
+                "loadTime": 2.8,
+                "timeStamp": 8902345678,
+                "error": [
+                    {
+                        "errorDescription": "error description 1",
+                        "errorCode": "CODE1",
+                    },
+                    {
+                        "errorDescription": "error description 2",
+                        "errorCode": "CODE2",
+                    }
+                ],
+                "urlParam": "?res/cid=xyz"
+            },
+
+            "tech": {
+                "environment": "prod",
+                "applicationVersion": "6.5.22.0",
+                "pageDelivered": "100%",
+                "datalayerVersion": "1.0.0"
+            }
+        });</script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Products List Page</title>
@@ -87,22 +122,22 @@
         const itemListElement = document.getElementById("product-list");
 
         if (itemListElement) {
-        const observer = new IntersectionObserver(
-            (entries, observer) => {
-            entries.forEach((entry) => {
-                if (entry.isIntersecting) {
-                // Push the event when the element becomes visible
-                pushViewItemListEvent();
+            const observer = new IntersectionObserver(
+                (entries, observer) => {
+                    entries.forEach((entry) => {
+                        if (entry.isIntersecting) {
+                            // Push the event when the element becomes visible
+                            pushViewItemListEvent();
 
-                // Stop observing after the event is pushed
-                observer.unobserve(entry.target);
-                }
-            });
-            },
-            { threshold: 0.5 } // Fire when 50% of the element is visible
-        );
+                            // Stop observing after the event is pushed
+                            observer.unobserve(entry.target);
+                        }
+                    });
+                },
+                { threshold: 0.5 } // Fire when 50% of the element is visible
+            );
 
-        observer.observe(itemListElement);
+            observer.observe(itemListElement);
         }
     </script>
 </body>
